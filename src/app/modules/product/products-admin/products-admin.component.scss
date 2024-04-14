@@ -1,0 +1,19 @@
+@import "~primeicons/primeicons.css";
+
+.app-test {
+  /* Vos autres styles ici */
+  margin-left: 255px;
+  /* Assurez-vous d'ajuster cette valeur en fonction de la largeur de votre barre latérale */
+}
+
+.button {
+  margin: 1em;
+}
+
+.button-right {
+  float: right;
+}
+
+:host ::ng-deep .pi-filter-icon {
+  display: none !important;
+}

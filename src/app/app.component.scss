@@ -1,0 +1,22 @@
+.app-header {
+    height: 50px;
+    margin-left: 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.app-container {
+    /* Vos autres styles ici */
+    width: 250px; /* Largeur fixe de la barre latérale */
+    position: fixed; /* Pour garder la barre latérale fixe lors du défilement du contenu */
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .app-frame {
+    /* Vos autres styles ici */
+    margin-left: 250px; /* Assurez-vous d'ajuster cette valeur en fonction de la largeur de votre barre latérale */
+  }
+  

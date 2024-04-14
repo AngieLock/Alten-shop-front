@@ -1,0 +1,83 @@
+<div class="app-container">
+    <div class="breadcrumb-container">
+        <p-breadcrumb [home]="homeItem" [model]="items"></p-breadcrumb>
+    </div>
+    <div class="margin-box">
+        <p-dataView [value]="filteredProducts" [paginator]="true" [rows]="10" [paginatorPosition]="'bottom'"
+            [rowsPerPageOptions]=" [10,25,50]" [sortField]="sortField" [sortOrder]="sortOrder" layout="grid"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [showCurrentPageReport]="true" filterBy="name">
+
+            <ng-template pTemplate="header" class="p-dataview-header">
+                <div class="header-container row">
+                    <div class="col-2">
+                        <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price"
+                            (onChange)="onSortChange($event)" class="mb-2 md:mb-0"></p-dropdown>
+                    </div>
+                    <div class="col-4 p-inputtext">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input type="text" placeholder="Search" class="input-border-search" (input)="filterData()"
+                                [(ngModel)]="searchTerm">
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template let-product pTemplate="listItem" class="p-dataview-content">
+                <div class="col-12 md:col-4">
+                    <div class="product-list-item">
+                        <div class="product-list-image">
+                            <img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" />
+                        </div>
+                        <div class="product-list-detail">
+                            <div class="product-name">{{product.name}}</div>
+                            <div class="product-description">{{product.description}}</div>
+                            <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                            <i class="pi pi-tag product-category-icon"></i><span
+                                class="product-category">{{product.category}}</span>
+                        </div>
+                        <div class="product-list-action">
+                            <span class="product-price">${{product.price}}</span>
+                            <p-button icon="pi pi-shopping-cart" label="Add to Cart"
+                                [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                            <span
+                                [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template let-product pTemplate="gridItem" class="p-dataview-content">
+                <div class="p-dataview-content">
+                    <div class="product-grid-item card">
+                        <div class="product-grid-item-top">
+                            <div>
+                                <i class="pi pi-tag product-category-icon"></i>
+                                <span class="product-category">{{product.category}}</span>
+                            </div>
+                            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">
+                                {{product.inventoryStatus}}
+                            </span>
+                        </div>
+                        <div class="product-grid-item-content">
+                            <img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" />
+                            <div class="product-name">{{product.name}}</div>
+                            <div class="product-description">{{product.description}}</div>
+                            <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                        </div>
+                        <div class="product-grid-item-bottom">
+                            <span class="product-price">${{product.price}}</span>
+                            <p-button icon="pi pi-shopping-cart"
+                                [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                        </div>
+                    </div>
+
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+</div>
