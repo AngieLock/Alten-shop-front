@@ -9,7 +9,7 @@ export const SIDENAV_ITEMS: SidenavItem[] = [
       fr: 'Administration'
     },
     link: '/admin/products',
-    icon: 'admin-icon'
+    icon: 'user'
   },
 
   {
@@ -19,7 +19,7 @@ export const SIDENAV_ITEMS: SidenavItem[] = [
       fr: "Produits"
     },
     link: '/products',
-    icon: 'products-icon'
+    icon: 'shopping-cart'
 
   }
 

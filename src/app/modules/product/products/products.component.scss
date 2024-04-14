@@ -10,7 +10,6 @@
 .input-border-search {
   border: none; // Supprime la bordure
   outline: none; // Supprime la mise en évidence lorsque l'input est en focus
-  // Autres styles que vous souhaitez réinitialiser
 }
 
 .p-input-icon-left {
@@ -28,43 +27,54 @@
   margin-left: 255px;
 }
 
+.p-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .product-list-item {
   display: flex;
   align-items: left;
   padding: 1rem;
-  width: 100%;
+  width: 33%;
+  border: 1px solid black;
+  margin: 2rem;
 }
 
 .product-list-detail {
   flex: 1 1 0;
+  align-items: left;
 }
 
 .product-list-image {
   flex: 1 0 0;
 }
 
-.container-products {
+.product-list-action {
   display: flex;
-  flex-wrap: wrap; // Permet le retour à la ligne des éléments
+  flex-direction: column;
 }
 
-.sub-container-product {
-  display: flex; // Chaque sous-conteneur occupe 33.33% de la largeur du conteneur principal
-  padding: 10px; // Ajoutez un peu d'espace entre les sous-conteneurs
+img {
+  width: 150px;
+  height: 100px;
+}
+
+.p-dataview-content {
+  display: flex;
+  padding: 10px;
+  border: 1px solid black;
 }
 
 .product-grid-item-top {
-  flex-basis: 33.33%; // Chaque sous-conteneur occupe 33.33% de la largeur du conteneur principal
   padding: 10px;
 }
 
 .product-grid-item-content {
-  flex-basis: 33.33%; // Chaque sous-conteneur occupe 33.33% de la largeur du conteneur principal
   padding: 10px;
 }
 
 .product-grid-item-bottom {
-  flex-basis: 33.33%; // Chaque sous-conteneur occupe 33.33% de la largeur du conteneur principal
   padding: 10px;
 }
 
