@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ProductModel } from 'app/modules/model/product-model';
 import { Table } from 'primeng/table';
-import { Subscription, catchError, of, switchMap, tap } from 'rxjs';
-import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
+import { Subscription, catchError, of, tap } from 'rxjs';
+import { ConfirmEventType, ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 
 
 @Component({
@@ -90,7 +90,6 @@ export class ProductsAdminComponent implements OnInit {
     } else {
       this.disableDelete = true;
     }
-
   }
 
   //Méthode de suppression
@@ -115,6 +114,9 @@ export class ProductsAdminComponent implements OnInit {
       accept: () => {
         this.products = this.products.filter(val => val.id !== product.id);
         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
       }
     });
   }

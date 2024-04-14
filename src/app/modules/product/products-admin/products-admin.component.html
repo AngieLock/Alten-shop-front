@@ -6,6 +6,9 @@
             <p-breadcrumb [home]="homeItem" [model]="items"></p-breadcrumb>
         </div>
 
+        <!-- Boîte de dialogue de confirmation -->
+        <p-confirmDialog></p-confirmDialog>
+
         <p-table #dt [value]="products" [paginator]="true" editMode="row" [paginatorPosition]="'bottom'" [rows]="9"
             [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -100,7 +103,6 @@
 
                         <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
                             (click)="hideDialog()" class="p-button-rounded p-button-text p-button-danger"></button>
-
                         <button pButton pRipple *ngIf="!editing" type="button" icon="pi pi-trash"
                             class="p-button-danger p-button-outlined button" (click)="deleteProduct(product)"></button>
                     </td>

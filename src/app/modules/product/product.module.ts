@@ -15,6 +15,8 @@ import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     BreadcrumbModule,
     RatingModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ]
 })
 export class ProductModule { }
