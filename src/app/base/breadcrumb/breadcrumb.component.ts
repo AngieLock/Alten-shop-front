@@ -17,7 +17,7 @@ export class BreadcrumbComponent implements OnInit {
   public items: MenuItem[] = [];
   private readonly sidenavItems: SidenavItem[] = SIDENAV_ITEMS;
   public homeItem: MenuItem = { label: 'Home', routerLink: '/' };
-  
+
   pageTitle: string = '';
 
   constructor(
@@ -28,7 +28,7 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.events.pipe(      
+    this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map((event: NavigationEnd) => event.url),
       startWith(this.router.url),

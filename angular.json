@@ -51,9 +51,13 @@
                 "input": "src/app/styles/light.css",
                 "bundleName": "mdc-light-deeppurple",
                 "inject": false
+<<<<<<< HEAD
               },
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css"
+=======
+              }
+>>>>>>> 3652a0c916334fe1ff39e250021cf99ad386d0e5
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/app/styles"]
