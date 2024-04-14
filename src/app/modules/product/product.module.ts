@@ -15,14 +15,12 @@ import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { TemplateTestComponent } from './template-test/template-test.component';
 
 
 @NgModule({
   declarations: [
     ProductsAdminComponent,
-    ProductsComponent,
-    TemplateTestComponent
+    ProductsComponent
   ],
   providers: [ProductService, MessageService, ConfirmationService],
   imports: [

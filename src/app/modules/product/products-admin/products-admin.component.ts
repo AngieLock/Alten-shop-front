@@ -28,7 +28,7 @@ export class ProductsAdminComponent implements OnInit {
   submitted: boolean;
 
   @ViewChild('dt')
-  dt: Table; // Référence à la table
+  dt: Table;
 
 
   constructor(private productService: ProductService, private messageService: MessageService,
@@ -41,7 +41,6 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    // Désabonner l'abonnement lors de la destruction du composant
     if (this.productsSubscription) {
       this.productsSubscription.unsubscribe();
     }

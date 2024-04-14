@@ -13,8 +13,8 @@ import { DataView } from 'primeng/dataview';
 export class ProductsComponent implements OnInit {
   products: ProductModel[];
   filteredProducts: ProductModel[];
-  totalRecords: number; // Nombre total de produits
-  currentPage: number = 1; // Page actuelle
+  totalRecords: number;
+  currentPage: number = 1;
   globalFilter: string = '';
   sortOrder: number;
   sortField: string;
@@ -45,7 +45,6 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    // Désabonner lors de la destruction du composant
     if (this.productsSubscription) {
       this.productsSubscription.unsubscribe();
     }
@@ -79,17 +78,11 @@ export class ProductsComponent implements OnInit {
   }
 
   filterData() {
-    // Convertir le terme de recherche en minuscules pour une recherche insensible à la casse
     const searchTermLower = this.searchTerm.toLowerCase();
 
-    // Filtrer les données en fonction du terme de recherche
     this.filteredProducts = this.products.filter(product => {
-      // Mettez ici les conditions de filtrage en fonction de vos besoins
-      // Par exemple, si vous voulez filtrer par nom de produit :
       return product.name.toLowerCase().includes(searchTermLower);
     });
-
-    // Mettre à jour le nombre total d'enregistrements pour la pagination
     this.totalRecords = this.filteredProducts.length;
   }
 
