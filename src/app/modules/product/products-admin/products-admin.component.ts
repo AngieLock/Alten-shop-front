@@ -3,7 +3,7 @@ import { ProductService } from '../product.service';
 import { ProductModel } from 'app/modules/model/product-model';
 import { Table } from 'primeng/table';
 import { Subscription, catchError, of, tap } from 'rxjs';
-import { ConfirmEventType, ConfirmationService, MenuItem, MessageService } from 'primeng/api';
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 
 
 @Component({
@@ -20,12 +20,11 @@ export class ProductsAdminComponent implements OnInit {
   items: MenuItem[] = [];
   selectedProducts: ProductModel[] = [];
   disableDelete: boolean = true;
-  private productsSubscription: Subscription;
-
-  loading: boolean;
-  totalRecords: number;
   productDialog: boolean;
   submitted: boolean;
+
+
+  private productsSubscription: Subscription;
 
   @ViewChild('dt')
   dt: Table;
@@ -37,7 +36,6 @@ export class ProductsAdminComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     this.items.push(this.adminItem);
-    this.loading = true;
   }
 
   ngOnDestroy(): void {
@@ -47,17 +45,6 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   // Obtention de données
-  /*
-  async getProducts() {
-    try {
-      const data = await this.productService.getProducts();
-      // Faites quelque chose avec vos données
-      this.products = data; // Supposons que vos données sont un tableau de produits
-    } catch (error) {
-      console.error('Une erreur s\'est produite lors du chargement des données:', error);
-    }
-  }
-*/
   getProducts() {
     this.productsSubscription = this.productService.getProducts().pipe(
       tap(products => {
@@ -70,6 +57,17 @@ export class ProductsAdminComponent implements OnInit {
       })
     ).subscribe();
   }
+  /*
+  async getProducts() {
+    try {
+      const data = await this.productService.getProducts();
+      // Faites quelque chose avec vos données
+      this.products = data; // Supposons que vos données sont un tableau de produits
+    } catch (error) {
+      console.error('Une erreur s\'est produite lors du chargement des données:', error);
+    }
+  }
+*/
 
   //New product
   openNew() {

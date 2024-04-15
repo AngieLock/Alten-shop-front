@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ProductModel } from 'app/modules/model/product-model';
-import { MenuItem, SelectItem } from 'primeng/api';
+import { MenuItem, MessageService, SelectItem } from 'primeng/api';
 import { Subscription, catchError, of, tap } from 'rxjs';
 import { DataView } from 'primeng/dataview';
 
@@ -14,25 +14,22 @@ export class ProductsComponent implements OnInit {
   products: ProductModel[];
   filteredProducts: ProductModel[];
   totalRecords: number;
-  currentPage: number = 1;
   globalFilter: string = '';
   sortOrder: number;
   sortField: string;
   sortKey: string;
-
   items: MenuItem[] = [];
   homeItem: MenuItem = { label: 'Home', routerLink: '/' };
   productItem: MenuItem = { label: 'Products', routerLink: '/products' };
   sortOptions: SelectItem[];
   searchTerm: string = '';
-  loading: boolean;
 
   private productsSubscription: Subscription;
 
-  @ViewChild('dt')
-  dt: DataView;
+  @ViewChild('dv')
+  dv: DataView;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -41,7 +38,6 @@ export class ProductsComponent implements OnInit {
       { label: 'Price Low to High', value: 'price' }
     ];
     this.items.push(this.productItem);
-    this.loading = true;
   }
 
   ngOnDestroy(): void {
@@ -49,17 +45,7 @@ export class ProductsComponent implements OnInit {
       this.productsSubscription.unsubscribe();
     }
   }
-  /*
-    async getProducts() {
-      try {
-        const data = await this.productService.getProducts();
-        // Faites quelque chose avec vos données
-        this.products = data; // Supposons que vos données sont un tableau de produits
-      } catch (error) {
-        console.error('Une erreur s\'est produite lors du chargement des données:', error);
-      }
-    }
-    */
+
   getProducts() {
     this.productsSubscription = this.productService.getProducts().pipe(
       tap(products => {
@@ -99,6 +85,21 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  addToCart(product: ProductModel) { }
+  addToCart(product: ProductModel) {
+    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product in your cart', life: 3000 });
+
+  }
 }
+
+/*
+    async getProducts() {
+      try {
+        const data = await this.productService.getProducts();
+        // Faites quelque chose avec vos données
+        this.products = data; // Supposons que vos données sont un tableau de produits
+      } catch (error) {
+        console.error('Une erreur s\'est produite lors du chargement des données:', error);
+      }
+    }
+    */
 

@@ -2,8 +2,10 @@
     <div class="breadcrumb-container">
         <p-breadcrumb [home]="homeItem" [model]="items"></p-breadcrumb>
     </div>
+    <!-- Boîte de dialogue de confirmation -->
+    <p-confirmDialog></p-confirmDialog>
     <div class="margin-box">
-        <p-dataView [value]="filteredProducts" [paginator]="true" [rows]="10" [paginatorPosition]="'bottom'"
+        <p-dataView #dv [value]="filteredProducts" [paginator]="true" [rows]="10" [paginatorPosition]="'bottom'"
             [rowsPerPageOptions]=" [10,25,50]" [sortField]="sortField" [sortOrder]="sortOrder" layout="grid"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             [showCurrentPageReport]="true" filterBy="name">
